@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipForce - Invoice</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 20px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .invoice-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .invoice-id, .invoice-date {
+            font-size: 14px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        .invoice-table th, .invoice-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .invoice-table th {
+            background-color: #f9f9f9;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #f5f5f5;
+        }
+        .payment-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .payment-section h3 {
+            margin-bottom: 20px;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">FlipForce</div>
+            <p>Professional Services</p>
+        </div>
+
+        <div class="invoice-details">
+            <div class="invoice-id">
+                <strong>Invoice #:</strong> FF-2025-0324
+            </div>
+            <div class="invoice-date">
+                <strong>Date:</strong> March 24, 2025
+            </div>
+        </div>
+
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Discord Bot Integrations</td>
+                    <td>1</td>
+                    <td>$180.00</td>
+                    <td>$180.00</td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: right;"><strong>Subtotal</strong></td>
+                    <td>$180.00</td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: right;"><strong>Tax (0%)</strong></td>
+                    <td>$0.00</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="3" style="text-align: right;"><strong>Total</strong></td>
+                    <td>$180.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="payment-section">
+            <h3>Payment Options</h3>
+            <p>Click the button below to set up your payment:</p>
+            <div id="paypal-button-container-P-8C701443N78787605M7QNI3Y"></div>
+            <script src="https://www.paypal.com/sdk/js?client-id=AUXywYq5jUH1ox_SzfmlRLSuLzEQvvp9HGtmO0Baa05cX9VN5kh4M6-jaZrTiF9yBy2__6alOuJvKZAw&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+            <script>
+              paypal.Buttons({
+                  style: {
+                      shape: 'rect',
+                      color: 'gold',
+                      layout: 'vertical',
+                      label: 'subscribe'
+                  },
+                  createSubscription: function(data, actions) {
+                    return actions.subscription.create({
+                      /* Creates the subscription */
+                      plan_id: 'P-8C701443N78787605M7QNI3Y'
+                    });
+                  },
+                  onApprove: function(data, actions) {
+                    alert(data.subscriptionID); // You can add optional success message for the subscriber here
+                  }
+              }).render('#paypal-button-container-P-8C701443N78787605M7QNI3Y'); // Renders the PayPal button
+            </script>
+        </div>
+
+        <div class="footer">
+            <p>Thank you for your business!</p>
+            <p>FlipForce</p>
+        </div>
+    </div>
+</body>
+</html>
